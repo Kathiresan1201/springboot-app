@@ -44,13 +44,6 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Service Labels
-*/}}
-{{- define "springboot-svc.labels" -}}
-hpecp.hpe.com/hpecp-internal-gateway: {{ .Values.service.internal-gateway | quote }}
-{{- end -}}
-
-{{/*
 Selector labels
 */}}
 {{- define "springboot-app.selectorLabels" -}}
@@ -67,4 +60,11 @@ Create the name of the service account to use
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
+{{- end -}}
+
+{{/*
+Service Labels
+*/}}
+{{- define "springboot-svc.labels" -}}
+hpecp.hpe.com/hpecp-internal-gateway: {{ default "true" }}
 {{- end -}}
