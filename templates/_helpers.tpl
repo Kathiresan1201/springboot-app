@@ -66,5 +66,5 @@ Create the name of the service account to use
 Service Labels
 */}}
 {{- define "springboot-svc.labels" -}}
-hpecp.hpe.com/hpecp-internal-gateway: {{ default "true" }}
+hpecp.hpe.com/hpecp-internal-gateway: {{ default "true" | quote }}
 {{- end -}}
